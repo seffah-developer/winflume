@@ -19,7 +19,7 @@
     "wall_height": 17.0,
     "side_wall_angle_deg": 63.43,
     "side_slope_ratio": "1:2 (H:V)",
-    "notes": "RBC flumes are geometrically similar (scale models of each other) - all dimensions are proportional to throat width b. Scaling ratios confirmed against 50mm (fully verified from drawing + user confirmation), 75mm, 150mm, and 200mm published drawings. CALCULATED from parametric scaling law - no dimension drawing PDF found in project for this size. Verify against manufacturer if precision-critical."
+    "notes": "RBC flumes are geometrically similar (scale models of each other) - all dimensions are proportional to throat width b. Scaling ratios confirmed against 50mm, 75mm, 150mm, and 200mm published drawings. CONFIRMED for 100mm against the actual manufacturer dimension drawing (provided by user) - wing wall, approach width, converging, and diverging lengths all match the parametric scaling law exactly. Wall height (17.0cm) follows the same confirmed 1.7x ratio but was not independently labeled on this particular drawing (no elevation view included)."
   },
   "hydraulics": {
     "head_measurement_point": "Ha, translocated stilling well near control section",
@@ -42,12 +42,12 @@
       }
     },
     "valid_head_range_ft": {
-      "min": 0.05,
+      "min": 0.06,
       "max": 0.32
     }
   },
   "operating_range": {
-    "min_flow_gpm": null,
+    "min_flow_gpm": 6.744,
     "max_flow_gpm": 129.3,
     "max_flow_l_s": 8.155
   }
