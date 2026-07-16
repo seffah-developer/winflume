@@ -1,0 +1,54 @@
+{
+  "flume_type": "rbc",
+  "size_label": "200mm",
+  "manufacturer_source": "Open Channel Flow (OCF)",
+  "reference_sources": [
+    "Wahl, T., Clemmens, A., Replogle, J., Bos, M., Simplified Design of Flumes and Weirs, Irrigation and Drainage, Vol. 54, 2005",
+    "Clemmens, Bos, Replogle - Water Measurement with Flumes and Weirs (2001)"
+  ],
+  "geometry": {
+    "units": "cm",
+    "throat_width": 20.0,
+    "entrance_wing_wall": 10.0,
+    "exit_wing_wall": 10.0,
+    "approach_section_length": 44.0,
+    "converging_section_length": 40.0,
+    "diverging_section_length": 60.0,
+    "exit_section_length": 34.0,
+    "overall_length": 120.0,
+    "wall_height": 34.0,
+    "side_wall_angle_deg": 63.43,
+    "side_slope_ratio": "1:2 (H:V)",
+    "notes": "RBC flumes are geometrically similar (scale models of each other) - all dimensions are proportional to throat width b. Scaling ratios confirmed against 50mm (fully verified from drawing + user confirmation), 75mm, 150mm, and 200mm published drawings. fiberglass200mmrbcflumedimensions.pdf (dims verified via parametric scaling law)"
+  },
+  "hydraulics": {
+    "head_measurement_point": "Ha, translocated stilling well near control section",
+    "submergence_transition_pct": 80,
+    "accuracy_pct": 2,
+    "discharge_equation": {
+      "gpm": {
+        "coefficient": 1615,
+        "offset_ft": 0.0179,
+        "exponent": 1.879,
+        "formula": "GPM = 1615 * (H_ft + 0.0179)^1.879",
+        "head_units": "ft"
+      },
+      "l_s_metric": {
+        "coefficient": 0.002189,
+        "offset_mm": 5.457,
+        "exponent": 1.879,
+        "formula": "L/S = 0.002189 * (H_mm + 5.457)^1.879",
+        "head_units": "mm"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.31,
+      "max": 0.66
+    }
+  },
+  "operating_range": {
+    "min_flow_gpm": 198.7,
+    "max_flow_gpm": 777.9,
+    "max_flow_l_s": 49.08
+  }
+}
