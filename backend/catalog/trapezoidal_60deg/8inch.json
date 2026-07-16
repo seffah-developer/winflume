@@ -1,0 +1,49 @@
+{
+  "flume_type": "trapezoidal_60deg",
+  "size_label": "8inch",
+  "manufacturer_source": "Transactions of the ASAE, Vol. 9, No. 3, 1966",
+  "reference_sources": [
+    "Water Measurement in Small Irrigation Channels Using Trapezoidal Flumes, Transactions of the ASAE, Vol. 9, No. 3, 1966"
+  ],
+  "geometry": {
+    "units": "cm",
+    "approach_exit_width": 121.9,
+    "throat_width": 20.32,
+    "wall_height": 70.39,
+    "ha_gage_offset": 7.62,
+    "segment_lengths": {
+      "segment_F": 45.72,
+      "segment_G": 49.77,
+      "segment_H": 50.8,
+      "segment_I": 49.77,
+      "segment_J": 15.24
+    },
+    "overall_length": 211.3,
+    "secondary_width_dim_B": 40.64,
+    "notes": "60-degree side slope, flat bottom throat width D=20.32cm (8in) Extracted from trapezoidalflumemasterdimensionsdrawing.pdf (OCF master dimensions table, letter-coded columns A-K). Wall height (E) spot-checked and confirmed correct against the drawing by the user for the Large 60-degree V size; other rows read from the same table with the same method."
+  },
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "formula": "CFS = 2.22 * H_ft^1.5 + 1.467 * H_ft^2.5",
+        "notes": "Two-term equation (weir term + orifice-like term), not a simple power law."
+      },
+      "l_s_metric": {
+        "formula": "L/S = 373.6 * H_m^1.5 + 809.9 * H_m^2.5",
+        "head_units": "m"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.21,
+      "max": 2.18,
+      "notes": "Table shows excessive error below 0.21 ft"
+    },
+    "submergence_transition_pct": 80,
+    "accuracy_pct": "3-5"
+  },
+  "operating_range": {
+    "min_flow_gpm": 109.2,
+    "max_flow_gpm": 7827
+  }
+}

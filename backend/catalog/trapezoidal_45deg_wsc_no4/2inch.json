@@ -1,0 +1,68 @@
+{
+  "flume_type": "trapezoidal_45deg_wsc_no4",
+  "size_label": "2inch",
+  "manufacturer_source": "Open Channel Flow (OCF)",
+  "reference_sources": [
+    "ISCO Open Channel Flow Measurement Handbook, 8th Edition",
+    "Trapezoidal Flumes for Measuring Flow in Irrigation Channels, USDA-ARS 41-140, March 1968"
+  ],
+  "geometry": {
+    "units": "cm",
+    "approach_exit_width": 66.2,
+    "throat_width": 5.08,
+    "wall_height": 26.91,
+    "ha_gage_offset": 3.82,
+    "segment_lengths": {
+      "segment_F": 20.32,
+      "segment_G": 21.27,
+      "segment_H": 21.59,
+      "segment_I": 21.27,
+      "segment_J": 7.62
+    },
+    "overall_length": 92.08,
+    "secondary_width_dim_B": 12.38,
+    "notes": "45-degree side slope, flat bottom throat width D=5.08cm (2in) Extracted from trapezoidalflumemasterdimensionsdrawing.pdf (OCF master dimensions table, letter-coded columns A-K). Wall height (E) spot-checked and confirmed correct against the drawing by the user for the Large 60-degree V size; other rows read from the same table with the same method."
+  },
+  "data_quality_note": "RESOLVED: the file named '12inch_45degree_srcrc_no_1_trapezoidal_flume_discharge_table12025.pdf' was confirmed by the user to be mislabeled - its actual content is a second WSC No. 4 (2-inch) dataset (polynomial curve-fit form), not SRCRC No. 1 data. Both equations below are legitimate and included; 'primary' is the simple power-law form (easier to compute with, from ISCO), 'alternate' is the polynomial curve-fit (from USDA-ARS, valid within +/-5% per source notes). SRCRC No. 1 (12-inch) data is NOT currently available in the project - the file intended to hold it does not contain that flume's data. A correctly-labeled source would need to be added.",
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation_primary": {
+      "cfs": {
+        "coefficient": 3.32,
+        "exponent": 2.32,
+        "formula": "CFS = 3.32 * H_ft^2.32"
+      },
+      "gpm": {
+        "coefficient": 1490,
+        "exponent": 2.32,
+        "formula": "GPM = 1490 * H_ft^2.32"
+      },
+      "mgd": {
+        "coefficient": 2.146,
+        "exponent": 2.32,
+        "formula": "MGD = 2.146 * H_ft^2.32"
+      },
+      "source": "ISCO Open Channel Flow Measurement Handbook, 8th Edition"
+    },
+    "discharge_equation_alternate": {
+      "cfs": {
+        "formula": "CFS = 0.107702 - 2.33095*H + 20.9685*H^2 - 73.4944*H^3 + 151.977*H^4 - 152.243*H^5 + 60.7906*H^6",
+        "notes": "Polynomial curve fit, accurate to within +/-5% of source calibration data."
+      },
+      "l_s_metric": {
+        "formula": "L/S = 3.04978101 - 216.55234*H + 6391.1988*H^2 - 73494.4*H^3 + 498612.205*H^4 - 1638730*H^5 + 2146799.78*H^6",
+        "head_units": "m"
+      },
+      "source": "USDA-ARS 41-140, March 1968"
+    },
+    "valid_head_range_ft": {
+      "min": 0.11,
+      "max": 0.83
+    },
+    "submergence_transition_pct": 80
+  },
+  "operating_range": {
+    "min_flow_gpm": 12.16,
+    "max_flow_gpm": 978.4
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "flume_type": "trapezoidal_38deg_srcrc_no2",
+  "size_label": "24inch",
+  "manufacturer_source": "USDA-ARS 41-140, March 1968",
+  "reference_sources": [
+    "Trapezoidal Flumes for Measuring Flow in Irrigation Channels, USDA-ARS 41-140, March 1968"
+  ],
+  "geometry": {
+    "units": "cm",
+    "approach_exit_width": 289.6,
+    "throat_width": 30.48,
+    "wall_height": 91.44,
+    "ha_gage_offset": 15.24,
+    "segment_lengths": {
+      "segment_F": 60.96,
+      "segment_G": 91.44,
+      "segment_H": 76.2,
+      "segment_I": 91.44,
+      "segment_J": 30.48
+    },
+    "overall_length": 320.0,
+    "secondary_width_dim_B": 60.96,
+    "notes": "38-degree side slope, flat bottom throat width D=30.48cm (12in) Extracted from trapezoidalflumemasterdimensionsdrawing.pdf (OCF master dimensions table, letter-coded columns A-K). Wall height (E) spot-checked and confirmed correct against the drawing by the user for the Large 60-degree V size; other rows read from the same table with the same method."
+  },
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "formula": "CFS = 0.19 + 1.67 * H_ft^1.5 + 4.27 * H_ft^2.5",
+        "notes": "Three-term equation (constant offset + weir term + orifice-like term)."
+      },
+      "l_s_metric": {
+        "formula": "L/S = 5.380 + 281.0 * H_m^1.5 + 2357 * H_m^2.5",
+        "head_units": "m"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.31,
+      "max": 2.59
+    },
+    "submergence_transition_pct": 80,
+    "accuracy_pct": "2-5"
+  },
+  "operating_range": {
+    "min_flow_gpm": 317.2,
+    "max_flow_gpm": 23898
+  }
+}

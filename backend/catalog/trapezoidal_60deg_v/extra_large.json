@@ -1,0 +1,68 @@
+{
+  "flume_type": "trapezoidal_60deg_v",
+  "size_label": "extra_large",
+  "manufacturer_source": "ISCO Open Channel Flow Measurement Handbook, 6th Edition",
+  "reference_sources": [
+    "ISCO Open Channel Flow Measurement Handbook, 6th Edition"
+  ],
+  "geometry": {
+    "units": "cm",
+    "approach_exit_width": 46.67,
+    "throat_width": 0.0,
+    "wall_height": 30.48,
+    "ha_gage_offset": 3.82,
+    "segment_lengths": {
+      "segment_F": 17.78,
+      "segment_G": 17.62,
+      "segment_H": 45.72,
+      "segment_I": 17.62,
+      "segment_J": 7.62
+    },
+    "overall_length": 106.4,
+    "secondary_width_dim_B": 11.43,
+    "notes": "60-degree V shape (D=0, no flat bottom - throat is a point/V-vertex) Extracted from trapezoidalflumemasterdimensionsdrawing.pdf (OCF master dimensions table, letter-coded columns A-K). Wall height (E) spot-checked and confirmed correct against the drawing by the user for the Large 60-degree V size; other rows read from the same table with the same method."
+  },
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "coefficient": 1.55,
+        "exponent": 2.63,
+        "formula": "CFS = 1.55 * H_ft^2.63"
+      },
+      "gpm": {
+        "coefficient": 695.6,
+        "exponent": 2.63,
+        "formula": "GPM = 695.6 * H_ft^2.63"
+      },
+      "mgd": {
+        "coefficient": 1.002,
+        "exponent": 2.63,
+        "formula": "MGD = 1.002 * H_ft^2.63"
+      },
+      "l_s_metric": {
+        "coefficient": 1001.3,
+        "exponent": 2.63,
+        "formula": "L/S = 1001.3 * H_m^2.63",
+        "head_units": "m"
+      },
+      "m3hr_metric": {
+        "coefficient": 3605,
+        "exponent": 2.63,
+        "formula": "M3/HR = 3605 * H_m^2.63",
+        "head_units": "m"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.06,
+      "max": 1.0,
+      "notes": "Table shows excessive error below 0.06 ft"
+    },
+    "submergence_transition_pct": 80,
+    "accuracy_pct": "within 1% of full scale (curve-fit)"
+  },
+  "operating_range": {
+    "min_flow_gpm": 0.4039,
+    "max_flow_gpm": 694.7
+  }
+}

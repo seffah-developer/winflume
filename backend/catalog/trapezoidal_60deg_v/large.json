@@ -1,0 +1,69 @@
+{
+  "flume_type": "trapezoidal_60deg_v",
+  "size_label": "large",
+  "manufacturer_source": "Open Channel Flow (OCF)",
+  "reference_sources": [
+    "Trapezoidal Flumes for Open-Channel Flow Measurement, Transactions of the ASAE, Vol. 3, No. 2, 1960",
+    "Measuring Water in Small Channels with WSC Flume, Washington Agricultural Experiment Station, Circular 200, 1952"
+  ],
+  "geometry": {
+    "units": "cm",
+    "approach_exit_width": 25.4,
+    "throat_width": 0.0,
+    "wall_height": 17.14,
+    "ha_gage_offset": 3.82,
+    "segment_lengths": {
+      "segment_F": 17.78,
+      "segment_G": 17.62,
+      "segment_H": 17.78,
+      "segment_I": 17.62,
+      "segment_J": 7.62
+    },
+    "overall_length": 78.42,
+    "secondary_width_dim_B": 5.08,
+    "notes": "60-degree V shape (D=0, no flat bottom - throat is a point/V-vertex) Extracted from trapezoidalflumemasterdimensionsdrawing.pdf (OCF master dimensions table, letter-coded columns A-K). Wall height (E) spot-checked and confirmed correct against the drawing by the user for the Large 60-degree V size; other rows read from the same table with the same method."
+  },
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "coefficient": 1.55,
+        "exponent": 2.58,
+        "formula": "CFS = 1.55 * H_ft^2.58"
+      },
+      "gpm": {
+        "coefficient": 695.6,
+        "exponent": 2.58,
+        "formula": "GPM = 695.6 * H_ft^2.58"
+      },
+      "mgd": {
+        "coefficient": 1.002,
+        "exponent": 2.58,
+        "formula": "MGD = 1.002 * H_ft^2.58"
+      },
+      "l_s_metric": {
+        "coefficient": 941.2,
+        "exponent": 2.58,
+        "formula": "L/S = 941.2 * H_m^2.58",
+        "head_units": "m"
+      },
+      "m3hr_metric": {
+        "coefficient": 3388,
+        "exponent": 2.58,
+        "formula": "M3/HR = 3388 * H_m^2.58",
+        "head_units": "m"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.15,
+      "max": 0.5,
+      "notes": "Table shows excessive error below 0.15 ft"
+    },
+    "submergence_transition_pct": 80,
+    "accuracy_pct": "2-5"
+  },
+  "operating_range": {
+    "min_flow_gpm": 5.208,
+    "max_flow_gpm": 116.3
+  }
+}
