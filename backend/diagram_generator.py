@@ -167,3 +167,127 @@ def generate_plan_view_svg(flume):
 </svg>'''
 
     return svg
+
+
+def generate_elevation_view_svg(flume):
+    """Returns a side-profile SVG showing wall height along the flume's length."""
+    profile = _get_profile(flume)
+    geo = flume.get("geometry")
+    if profile is None or geo is None or "wall_height" not in geo:
+        return None
+
+    PADDING = 60
+    DRAW_WIDTH = 600
+    wall_height = geo["wall_height"]
+    scale_x = DRAW_WIDTH / profile["overall_length"]
+    scale_y = min(6.0, 120 / wall_height)
+
+    svg_width = DRAW_WIDTH + 2 * PADDING
+    svg_height = wall_height * scale_y + 2 * PADDING + 60
+
+    base_y = svg_height - PADDING - 40
+    top_y = base_y - wall_height * scale_y
+    x0 = PADDING
+    x1 = x0 + DRAW_WIDTH
+
+    # RBC family has a sloped ramp up to the control section; others shown as a simple box
+    is_rbc = flume.get("flume_type") == "rbc"
+    if is_rbc:
+        ramp_end_x = x0 + (x1 - x0) * 0.55  # approximate ramp position for visualization
+        outline = (
+            f"{x0},{base_y} {x0},{top_y} {x1},{top_y} {x1},{base_y} "
+            f"{ramp_end_x},{base_y} {x0},{base_y}"
+        )
+        polyline_points = f"{x0},{base_y} {x0},{top_y} {x1},{top_y} {x1},{base_y} {ramp_end_x},{base_y-2}"
+    else:
+        outline = f"{x0},{base_y} {x0},{top_y} {x1},{top_y} {x1},{base_y}"
+
+    label = f"{flume.get('flume_type', '')} - {flume.get('size_label', '')} (Elevation View)"
+
+    svg = f'''<svg viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="{PADDING}" y="{svg_height - 15}" font-size="14" fill="#111">{label}</text>
+
+  <!-- Flow arrow -->
+  <line x1="{x0 - 40}" y1="{(top_y + base_y) / 2}" x2="{x0 - 10}" y2="{(top_y + base_y) / 2}" stroke="#2563eb" stroke-width="2" marker-end="url(#arrow2)"/>
+  <text x="{x0 - 40}" y="{(top_y + base_y) / 2 - 10}" font-size="11" fill="#2563eb">FLOW</text>
+  <defs>
+    <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+  </defs>
+
+  <polygon points="{outline}" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2"/>
+
+  <!-- Wall height dimension -->
+  <line x1="{x0 - 20}" y1="{base_y}" x2="{x0 - 20}" y2="{top_y}" stroke="#111" stroke-width="1"/>
+  <text x="{x0 - 55}" y="{(top_y + base_y) / 2}" font-size="12" fill="#111" transform="rotate(-90 {x0 - 55} {(top_y + base_y) / 2})">
+    Height: {wall_height:.2f} cm
+  </text>
+
+  <!-- Overall length dimension -->
+  <line x1="{x0}" y1="{base_y + 25}" x2="{x1}" y2="{base_y + 25}" stroke="#111" stroke-width="1"/>
+  <text x="{(x0 + x1) / 2 - 40}" y="{base_y + 40}" font-size="12" fill="#111">
+    Overall: {profile['overall_length']:.1f} cm
+  </text>
+</svg>'''
+
+    return svg
+
+
+def generate_end_view_svg(flume):
+    """Returns an end/cross-section SVG showing the throat shape (V-notch or flat-bottom trapezoid)."""
+    geo = flume.get("geometry")
+    profile = _get_profile(flume)
+    if geo is None or profile is None or "wall_height" not in geo:
+        return None
+
+    PADDING = 60
+    wall_height = geo["wall_height"]
+    throat_width = profile["throat_width"]
+    entrance_width = profile["entrance_width"]
+
+    scale = min(8.0, 300 / max(entrance_width, wall_height * 2))
+
+    svg_width = entrance_width * scale + 2 * PADDING
+    svg_height = wall_height * scale + 2 * PADDING + 40
+
+    base_y = svg_height - PADDING - 20
+    top_y = base_y - wall_height * scale
+    center_x = svg_width / 2
+
+    half_top = (entrance_width * scale) / 2
+    half_throat = (throat_width * scale) / 2
+
+    # Trapezoid (or triangle if throat_width is 0) cross-section
+    points = (
+        f"{center_x - half_top},{top_y} "
+        f"{center_x - half_throat},{base_y} "
+        f"{center_x + half_throat},{base_y} "
+        f"{center_x + half_top},{top_y}"
+    )
+
+    angle_label = ""
+    if "side_wall_angle_deg" in geo:
+        angle_label = f'<text x="{center_x + half_top + 10}" y="{top_y + 15}" font-size="12" fill="#111">{geo["side_wall_angle_deg"]}\u00b0</text>'
+    elif "side_slope_angle_deg" in geo:
+        angle_label = f'<text x="{center_x + half_top + 10}" y="{top_y + 15}" font-size="12" fill="#111">{geo["side_slope_angle_deg"]}\u00b0</text>'
+
+    label = f"{flume.get('flume_type', '')} - {flume.get('size_label', '')} (End View)"
+
+    svg = f'''<svg viewBox="0 0 {svg_width} {svg_height}" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect width="100%" height="100%" fill="white"/>
+  <text x="{PADDING}" y="{svg_height - 10}" font-size="14" fill="#111">{label}</text>
+
+  <polygon points="{points}" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2"/>
+  {angle_label}
+
+  <text x="{center_x - half_top}" y="{top_y - 10}" font-size="12" fill="#111">
+    Width: {entrance_width:.2f} cm
+  </text>
+  <text x="{center_x + half_throat + 5}" y="{base_y + 15}" font-size="12" fill="#111">
+    Throat: {throat_width:.2f} cm
+  </text>
+</svg>'''
+
+    return svg

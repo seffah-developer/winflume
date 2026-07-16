@@ -3,6 +3,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from catalog_loader import load_catalog
 from recommender import recommend
 from diagram_generator import generate_plan_view_svg
+from diagram_generator import generate_plan_view_svg, generate_elevation_view_svg, generate_end_view_svg
+from discharge_calculator import compute_discharge_table
 
 
 app = FastAPI()
@@ -22,6 +24,36 @@ def read_root():
 @app.get("/flumes")
 def list_flumes():
     return load_catalog()
+
+@app.get("/flumes/{flume_id}/diagram/elevation")
+def get_flume_elevation(flume_id: str):
+    flumes = load_catalog()
+    flume = next((f for f in flumes if f["id"] == flume_id), None)
+    if flume is None:
+        raise HTTPException(status_code=404, detail=f"Flume '{flume_id}' not found")
+    svg = generate_elevation_view_svg(flume)
+    if svg is None:
+        raise HTTPException(status_code=422, detail="No elevation data available")
+    return Response(content=svg, media_type="image/svg+xml")
+
+@app.get("/flumes/{flume_id}/diagram/end")
+def get_flume_end_view(flume_id: str):
+    flumes = load_catalog()
+    flume = next((f for f in flumes if f["id"] == flume_id), None)
+    if flume is None:
+        raise HTTPException(status_code=404, detail=f"Flume '{flume_id}' not found")
+    svg = generate_end_view_svg(flume)
+    if svg is None:
+        raise HTTPException(status_code=422, detail="No end-view data available")
+    return Response(content=svg, media_type="image/svg+xml")
+
+@app.get("/flumes/{flume_id}/discharge")
+def get_flume_discharge(flume_id: str):
+    flumes = load_catalog()
+    flume = next((f for f in flumes if f["id"] == flume_id), None)
+    if flume is None:
+        raise HTTPException(status_code=404, detail=f"Flume '{flume_id}' not found")
+    return compute_discharge_table(flume)
 
 @app.get("/flumes/{flume_id}/diagram")
 def get_flume_diagram(flume_id: str):

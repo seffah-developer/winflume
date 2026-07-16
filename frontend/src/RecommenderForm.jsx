@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import FlumeDetail from './FlumeDetail'
 
 // --- Unit conversion helpers ---
 const FLOW_TO_GPM = {
@@ -25,6 +26,7 @@ function RecommenderForm() {
   const [minFlow, setMinFlow] = useState('')
   const [maxFlow, setMaxFlow] = useState('')
   const [flowUnit, setFlowUnit] = useState('gpm')
+  const [openDiagramId, setOpenDiagramId] = useState(null)
 
   const [headLoss, setHeadLoss] = useState('')
   const [headUnit, setHeadUnit] = useState('ft')
@@ -154,6 +156,14 @@ function RecommenderForm() {
               <div>Flow range: {r.min_flow_gpm?.toFixed(2)} - {r.max_flow_gpm?.toFixed(2)} GPM</div>
               <div>Required head: {r.required_head_ft?.toFixed(2)} ft</div>
               <div>Flume width: {r.flume_width_cm?.toFixed(1)} cm</div>
+              <button
+                type="button"
+                style={{ marginTop: 8 }}
+                onClick={() => setOpenDiagramId(openDiagramId === r.id ? null : r.id)}
+              >
+                {openDiagramId === r.id ? 'Hide Details' : 'View Details'}
+              </button>
+              {openDiagramId === r.id && <FlumeDetail flumeId={r.id} />}
             </div>
           ))}
 
