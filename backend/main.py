@@ -1,7 +1,9 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException,  Response
 from fastapi.middleware.cors import CORSMiddleware
 from catalog_loader import load_catalog
 from recommender import recommend
+from diagram_generator import generate_plan_view_svg
+
 
 app = FastAPI()
 
@@ -20,6 +22,19 @@ def read_root():
 @app.get("/flumes")
 def list_flumes():
     return load_catalog()
+
+@app.get("/flumes/{flume_id}/diagram")
+def get_flume_diagram(flume_id: str):
+    flumes = load_catalog()
+    flume = next((f for f in flumes if f["id"] == flume_id), None)
+    if flume is None:
+        raise HTTPException(status_code=404, detail=f"Flume '{flume_id}' not found")
+
+    svg = generate_plan_view_svg(flume)
+    if svg is None:
+        raise HTTPException(status_code=422, detail="No geometry available to generate a diagram for this flume")
+
+    return Response(content=svg, media_type="image/svg+xml")
 
 @app.get("/flumes/{flume_id}")
 def get_flume(flume_id: str):

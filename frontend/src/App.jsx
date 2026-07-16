@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import RecommenderForm from './RecommenderForm'
 
 function App() {
   const [message, setMessage] = useState('Loading...')
@@ -15,6 +16,7 @@ function App() {
     <div>
       <h1>WinFlume Pro Max</h1>
       <p>Backend says: {message}</p>
+      <RecommenderForm />
     </div>
   )
 }
