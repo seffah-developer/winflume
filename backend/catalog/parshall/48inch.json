@@ -1,0 +1,48 @@
+{
+  "flume_type": "parshall",
+  "size_label": "48inch",
+  "manufacturer_source": "USBR Water Measurement Manual, 3rd Edition / ASTM D 1941-91",
+  "reference_sources": [
+    "USBR Water Measurement Manual, 3rd Edition, Table 8-6",
+    "ASTM D 1941-91 (2007): Standard Test Method for Open Channel Flow Measurement of Water with Parshall Flume"
+  ],
+  "geometry": {
+    "units": "cm",
+    "throat_width": 121.9,
+    "converging_side_length": 182.9,
+    "converging_axial_length_B": 182.9,
+    "gage_offset_2_3A": 121.9,
+    "entrance_width": 179.4,
+    "exit_width": 152.4,
+    "wall_height": 193.7,
+    "throat_length": 60.69,
+    "diverging_length": 22.86,
+    "crest_to_floor_drop": 7.62,
+    "confidence_note": "medium - same pattern basis"
+  },
+  "original_drawings": {
+    "dimension_drawing_pdf": "fiberglass48inchparshallflumedimensions.pdf",
+    "discharge_table_pdf": "48inch_parshall_flume_discharge_table.pdf"
+  },
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "coefficient": 16.0,
+        "exponent": 1.58,
+        "formula": "CFS = 16.0 * H_ft^1.58"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.15,
+      "max": 3.5,
+      "notes": "Estimated from USBR general guidance and typical calibration range for this size class - not yet confirmed against this size's full source table."
+    },
+    "submergence_transition_pct": 70,
+    "accuracy_pct": "3-5"
+  },
+  "operating_range": {
+    "min_flow_gpm": 358.449,
+    "max_flow_gpm": 51979.289
+  }
+}

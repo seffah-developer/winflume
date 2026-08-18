@@ -64,5 +64,9 @@
   "operating_range": {
     "min_flow_gpm": 12.16,
     "max_flow_gpm": 978.4
+  },
+  "original_drawings": {
+    "dimension_drawing_pdf": "trapezoidalflumemasterdimensionsdrawing.pdf",
+    "discharge_table_pdf": "2inch_45degree_wsc_no_4_trapezoidal_flume_discharge_table.pdf"
   }
 }

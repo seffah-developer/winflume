@@ -1,0 +1,36 @@
+{
+  "flume_type": "parshall",
+  "size_label": "144inch",
+  "manufacturer_source": "USBR Water Measurement Manual, 3rd Edition / ASTM D 1941-91",
+  "reference_sources": [
+    "USBR Water Measurement Manual, 3rd Edition, Table 8-6",
+    "ASTM D 1941-91 (2007): Standard Test Method for Open Channel Flow Measurement of Water with Parshall Flume"
+  ],
+  "geometry": null,
+  "geometry_status": "Geometry not yet structured/verified. Parshall flumes do NOT scale linearly between sizes (unlike RBC), so dimensions were deliberately not calculated or guessed. The original manufacturer dimension drawing PDF is linked below and can be viewed directly as a fallback until structured geometry is added.",
+  "original_drawings": {
+    "dimension_drawing_pdf": "fiberglass144inchparshallflumedimensions.pdf",
+    "discharge_table_pdf": "144inch_parshall_flume_discharge_table.pdf"
+  },
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "coefficient": 46.75,
+        "exponent": 1.6,
+        "formula": "CFS = 46.75 * H_ft^1.6"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.25,
+      "max": 5.7,
+      "notes": "Estimated from USBR general guidance and typical calibration range for this size class - not yet confirmed against this size's full source table."
+    },
+    "submergence_transition_pct": 80,
+    "accuracy_pct": "3-5"
+  },
+  "operating_range": {
+    "min_flow_gpm": 2283.329,
+    "max_flow_gpm": 339831.967
+  }
+}

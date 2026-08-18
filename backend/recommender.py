@@ -38,15 +38,22 @@ def _get_channel_width_cm(flume):
     """
     Returns the flume's outer footprint width (cm) - the minimum channel
     width it needs to fit in. Tries several field names since geometry
-    schemas differ slightly by flume family.
+    schemas differ slightly by flume family. Where both an entrance and
+    exit width exist, uses the wider of the two (conservative fit check).
     """
     geometry = flume.get("geometry")
     if not geometry:
         return None
 
-    for key in ("approach_width", "approach_exit_width", "exit_width"):
+    for key in ("approach_width", "approach_exit_width"):
         if key in geometry:
             return geometry[key]
+
+    if "entrance_width" in geometry or "exit_width" in geometry:
+        candidates = [geometry.get("entrance_width"), geometry.get("exit_width")]
+        candidates = [c for c in candidates if c is not None]
+        if candidates:
+            return max(candidates)
 
     # RBC family: approximate outer width as throat + 2x entrance wing wall
     if "entrance_wing_wall" in geometry and "throat_width" in geometry:
@@ -106,6 +113,7 @@ def recommend(min_flow_gpm, max_flow_gpm, available_head_ft, channel_width_cm, c
             "min_flow_gpm": flume_min_gpm,
             "required_head_ft": required_head_ft,
             "flume_width_cm": flume_width_cm,
+            "characteristics": flume.get("characteristics"),
         })
 
     # Sort: fitting flumes first (smallest max_flow_gpm = smallest flume that works),

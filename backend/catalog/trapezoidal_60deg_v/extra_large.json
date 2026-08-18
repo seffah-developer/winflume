@@ -64,5 +64,9 @@
   "operating_range": {
     "min_flow_gpm": 0.4039,
     "max_flow_gpm": 694.7
+  },
+  "original_drawings": {
+    "dimension_drawing_pdf": "fiberglassextralarge60degreevtrapezoidalflumedimensions.pdf",
+    "discharge_table_pdf": "extra_large_60degreev_trapezoidal_flume_discharge_table.pdf"
   }
 }

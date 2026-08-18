@@ -1,0 +1,45 @@
+{
+  "flume_type": "parshall",
+  "size_label": "12inch",
+  "manufacturer_source": "USBR Water Measurement Manual, 3rd Edition / ASTM D 1941-91",
+  "reference_sources": [
+    "USBR Water Measurement Manual, 3rd Edition, Table 8-6",
+    "ASTM D 1941-91 (2007): Standard Test Method for Open Channel Flow Measurement of Water with Parshall Flume"
+  ],
+  "geometry": {
+    "units": "cm",
+    "throat_width": 30.48,
+    "converging_side_length": 134.3,
+    "converging_axial_length": 91.44,
+    "entrance_width": 84.46,
+    "exit_width": 60.69,
+    "throat_length": 60.69,
+    "wall_height": 91.44,
+    "notes": "Read directly by user from fiberglass12inchparshallflumedimensions.pdf plan/elevation views. Note: T (throat length) and C (exit width) were both reported as the same value (60.69 cm) - worth a quick visual double-check that these are in fact two distinct dimensions on the drawing and not a duplicate entry, but using as directly reported for now."
+  },
+  "original_drawings": {
+    "dimension_drawing_pdf": "fiberglass12inchparshallflumedimensions.pdf",
+    "discharge_table_pdf": "12inch_parshall_flume_discharge_table.pdf"
+  },
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "coefficient": 3.95,
+        "exponent": 1.55,
+        "formula": "CFS = 3.95 * H_ft^1.55"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.1,
+      "max": 2.0,
+      "notes": "Estimated from USBR general guidance and typical calibration range for this size class - not yet confirmed against this size's full source table."
+    },
+    "submergence_transition_pct": 70,
+    "accuracy_pct": "3-5"
+  },
+  "operating_range": {
+    "min_flow_gpm": 49.967,
+    "max_flow_gpm": 5191.304
+  }
+}

@@ -1,22 +1,21 @@
-import { useState, useEffect } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import RecommenderForm from './RecommenderForm'
+import NavBar from './NavBar'
+import HomePage from './HomePage'
+import RecommenderPage from './RecommenderPage'
+import CustomRbcDesigner from './CustomRbcDesigner'
+
+
 
 function App() {
-  const [message, setMessage] = useState('Loading...')
-
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/')
-      .then((res) => res.json())
-      .then((data) => setMessage(data.message))
-      .catch((err) => setMessage('Error connecting to backend: ' + err.message))
-  }, [])
-
   return (
     <div>
-      <h1>WinFlume Pro Max</h1>
-      <p>Backend says: {message}</p>
-      <RecommenderForm />
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/recommend" element={<RecommenderPage />} />
+        <Route path="/design-rbc" element={<CustomRbcDesigner />} />
+      </Routes>
     </div>
   )
 }

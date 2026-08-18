@@ -1,0 +1,48 @@
+{
+  "flume_type": "parshall",
+  "size_label": "120inch",
+  "manufacturer_source": "USBR Water Measurement Manual, 3rd Edition / ASTM D 1941-91",
+  "reference_sources": [
+    "USBR Water Measurement Manual, 3rd Edition, Table 8-6",
+    "ASTM D 1941-91 (2007): Standard Test Method for Open Channel Flow Measurement of Water with Parshall Flume"
+  ],
+  "geometry": {
+    "units": "cm",
+    "throat_width": 304.8,
+    "converging_side_length": 274.3,
+    "converging_axial_length_B": 274.3,
+    "gage_offset_2_3A": 182.9,
+    "entrance_width": 274.3,
+    "exit_width": 304.8,
+    "wall_height": 400.1,
+    "throat_length": 91.44,
+    "diverging_length": 30.48,
+    "crest_to_floor_drop": 7.62,
+    "confidence_note": "low - this size sits in the 80% submergence group (different from the 12-96in group), and my direct drawing reading here was internally inconsistent (caught and replaced with a trend-based extrapolation from 84in/96in instead of the raw reading). Treat this entry as a rough placeholder pending a real re-check against the drawing. FLAGGED: entrance_width came out smaller than exit_width, which contradicts the pattern seen in every directly-confirmed size (1,2,3,12in) - likely a C/D reading swap. Recommend re-checking this size's drawing before relying on its diagram for real engineering use."
+  },
+  "original_drawings": {
+    "dimension_drawing_pdf": "fiberglass120inchparshallflumedimensions.pdf",
+    "discharge_table_pdf": "120inch_parshall_flume_discharge_table.pdf"
+  },
+  "hydraulics": {
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "coefficient": 39.38,
+        "exponent": 1.6,
+        "formula": "CFS = 39.38 * H_ft^1.6"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.25,
+      "max": 5.5,
+      "notes": "Estimated from USBR general guidance and typical calibration range for this size class - not yet confirmed against this size's full source table."
+    },
+    "submergence_transition_pct": 80,
+    "accuracy_pct": "3-5"
+  },
+  "operating_range": {
+    "min_flow_gpm": 1923.369,
+    "max_flow_gpm": 270357.773
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "flume_type": "trapezoidal_60deg_v",
+  "size_label": "small",
+  "manufacturer_source": "Open Channel Flow (OCF)",
+  "reference_sources": [
+    "Trapezoidal Flumes for Open-Channel Flow Measurement, Transactions of the ASAE, Vol. 3, No. 2, 1960",
+    "Measuring Water in Small Channels with WSC Flume, Washington Agricultural Experiment Station, Circular 200, 1952"
+  ],
+  "geometry": {
+    "units": "cm",
+    "throat_width": 5.08,
+    "approach_width": 17.15,
+    "exit_width": 17.15,
+    "converging_section_length": 12.7,
+    "throat_length": 10.28,
+    "diverging_section_length": 12.7,
+    "exit_straight_length": 5.08,
+    "overall_length": 51.04,
+    "wall_height": 10.16,
+    "side_slope_angle_deg": 60,
+    "notes": "Side slope forms a V-shape at 60 degrees from horizontal, per flume naming convention. Wall height taken from elevation view."
+  },
+  "hydraulics": {
+    "head_measurement_point": "Ha, located at the converging section per drawing",
+    "submergence_transition_pct": 80,
+    "accuracy_pct": "2-5",
+    "head_units": "ft",
+    "discharge_equation": {
+      "cfs": {
+        "coefficient": 1.55,
+        "exponent": 2.58,
+        "formula": "CFS = 1.55 * H_ft^2.58"
+      },
+      "gpm": {
+        "coefficient": 695.6,
+        "exponent": 2.58,
+        "formula": "GPM = 695.6 * H_ft^2.58"
+      },
+      "mgd": {
+        "coefficient": 1.002,
+        "exponent": 2.58,
+        "formula": "MGD = 1.002 * H_ft^2.58"
+      },
+      "l_s_metric": {
+        "coefficient": 941.2,
+        "exponent": 2.58,
+        "formula": "L/S = 941.2 * H_m^2.58",
+        "head_units": "m"
+      },
+      "m3hr_metric": {
+        "coefficient": 3388,
+        "exponent": 2.58,
+        "formula": "M3/HR = 3388 * H_m^2.58",
+        "head_units": "m"
+      }
+    },
+    "valid_head_range_ft": {
+      "min": 0.09,
+      "max": 0.27,
+      "notes": "Below 0.09 ft, table notes 'excessive error due to fluid-flow properties and boundary conditions' - exclude from valid operating range."
+    },
+    "discharge_table_cfs": [
+      {
+        "head_ft": 0.09,
+        "cfs": 0.0031
+      },
+      {
+        "head_ft": 0.1,
+        "cfs": 0.0041
+      },
+      {
+        "head_ft": 0.11,
+        "cfs": 0.0052
+      },
+      {
+        "head_ft": 0.12,
+        "cfs": 0.0065
+      },
+      {
+        "head_ft": 0.13,
+        "cfs": 0.008
+      },
+      {
+        "head_ft": 0.14,
+        "cfs": 0.0097
+      },
+      {
+        "head_ft": 0.15,
+        "cfs": 0.0116
+      },
+      {
+        "head_ft": 0.16,
+        "cfs": 0.0137
+      },
+      {
+        "head_ft": 0.17,
+        "cfs": 0.016
+      },
+      {
+        "head_ft": 0.18,
+        "cfs": 0.0186
+      },
+      {
+        "head_ft": 0.19,
+        "cfs": 0.0214
+      },
+      {
+        "head_ft": 0.2,
+        "cfs": 0.0244
+      },
+      {
+        "head_ft": 0.21,
+        "cfs": 0.0276
+      },
+      {
+        "head_ft": 0.22,
+        "cfs": 0.0312
+      },
+      {
+        "head_ft": 0.23,
+        "cfs": 0.035
+      },
+      {
+        "head_ft": 0.24,
+        "cfs": 0.039
+      },
+      {
+        "head_ft": 0.25,
+        "cfs": 0.0434
+      },
+      {
+        "head_ft": 0.26,
+        "cfs": 0.048
+      },
+      {
+        "head_ft": 0.27,
+        "cfs": 0.0529
+      }
+    ]
+  },
+  "operating_range": {
+    "min_flow_cfs": 0.0031,
+    "max_flow_cfs": 0.0529,
+    "min_flow_gpm": 1.394,
+    "max_flow_gpm": 23.73
+  },
+  "original_drawings": {
+    "dimension_drawing_pdf": "fiberglasssmall60degreevtrapezoidalflumedimensions_1.pdf",
+    "discharge_table_pdf": "small_60degreev_trapezoidal_flume_discharge_table.pdf"
+  }
+}

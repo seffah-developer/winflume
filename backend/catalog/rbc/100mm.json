@@ -50,5 +50,9 @@
     "min_flow_gpm": 6.744,
     "max_flow_gpm": 129.3,
     "max_flow_l_s": 8.155
+  },
+  "original_drawings": {
+    "dimension_drawing_pdf": "trapezoidalflumemasterdimensionsdrawing.pdf",
+    "discharge_table_pdf": "100_mm_rbc_flume_discharge_table.pdf"
   }
 }

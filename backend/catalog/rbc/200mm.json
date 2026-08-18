@@ -50,5 +50,9 @@
     "min_flow_gpm": 198.7,
     "max_flow_gpm": 777.9,
     "max_flow_l_s": 49.08
+  },
+  "original_drawings": {
+    "dimension_drawing_pdf": "fiberglass200mmrbcflumedimensions.pdf",
+    "discharge_table_pdf": "200_mm_rbc_flume_discharge_table.pdf"
   }
 }
