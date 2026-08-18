@@ -21,7 +21,7 @@ function NavBar() {
       background: 'var(--surface)',
     }}>
       <Link to="/" style={{ textDecoration: 'none', color: 'var(--text)', fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: '1.15rem' }}>
-        WinFlume <span style={{ color: 'var(--accent)' }}>Pro Max</span>
+        Flume <span style={{ color: 'var(--accent)' }}>Recommender</span>
       </Link>
       <div>
         <Link to="/" style={linkStyle('/')}>Home</Link>

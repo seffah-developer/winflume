@@ -18,7 +18,7 @@ function HomePage() {
         OPEN CHANNEL FLOW MEASUREMENT
       </div>
 
-      <h1 style={{ fontSize: '3rem', margin: '0 0 1rem' }}>WinFlume Pro Max</h1>
+      <h1 style={{ fontSize: '3rem', margin: '0 0 1rem' }}>Flume Recommender</h1>
       <p style={{ fontSize: '1.15rem', color: 'var(--text-muted)', maxWidth: 560, margin: '0 auto 2.5rem', lineHeight: 1.6 }}>
         Enter your flow range, available head, and channel width.
         Get a matched flume, dimensioned diagrams, and discharge data — instantly.
