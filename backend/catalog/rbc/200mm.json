@@ -42,12 +42,12 @@
       }
     },
     "valid_head_range_ft": {
-      "min": 0.31,
+      "min": 0.07,
       "max": 0.66
     }
   },
   "operating_range": {
-    "min_flow_gpm": 198.7,
+    "min_flow_gpm": 16.75,
     "max_flow_gpm": 777.9,
     "max_flow_l_s": 49.08
   },
